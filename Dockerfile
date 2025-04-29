@@ -7,6 +7,9 @@ WORKDIR /app
 # Copy the necessary files
 COPY pyproject.toml uv.lock ./
 
+# Set Tsinghua PyPI mirror
+ENV UV_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple
+
 # Install the project's dependencies
 RUN --mount=type=cache,target=/root/.cache/uv uv sync --frozen --no-dev --no-editable
 
